@@ -1,0 +1,5 @@
+{
+  "name": " Social Group Manager",
+  "description": "An application to efficiently manage your Facebook groups. Bulk leave groups, publish posts across multiple groups, and log your activity to Google Drive. Includes an AI-powered post idea generator.",
+  "requestFramePermissions": []
+}
