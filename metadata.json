@@ -1,5 +1,5 @@
 {
-  "name": " Social Group Manager",
-  "description": "An application to efficiently manage your Facebook groups. Bulk leave groups, publish posts across multiple groups, and log your activity to Google Drive. Includes an AI-powered post idea generator.",
+  "name": "Social Media Suite",
+  "description": "A powerful application to manage social media presence across multiple platforms like Facebook, Twitter, LinkedIn, Instagram, and TikTok. Features include bulk management with platform filtering, cross-platform publishing with custom titles and content, multi-language support, an animated UI, and an AI-powered idea generator.",
   "requestFramePermissions": []
 }

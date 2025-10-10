@@ -1,9 +1,15 @@
 
-export interface Group {
+export type Platform = 'Facebook' | 'Twitter' | 'LinkedIn' | 'Instagram' | 'TikTok';
+
+export type PublishTargetType = 'Group' | 'Page' | 'Profile';
+
+export interface PublishTarget {
     id: string;
     name: string;
-    memberCount: number;
-    privacy: 'Public' | 'Private';
+    platform: Platform;
+    type: PublishTargetType;
+    memberCount?: number;
+    privacy?: 'Public' | 'Private';
     imageUrl: string;
 }
 
@@ -15,4 +21,4 @@ export interface ActivityLogEntry {
     status: 'Success' | 'Pending' | 'Failed';
 }
 
-export type View = 'dashboard' | 'groups' | 'publish' | 'logs';
+export type View = 'dashboard' | 'groups' | 'publish' | 'logs' | 'settings';

@@ -1,41 +1,41 @@
 
 import React, { createContext, useReducer, useContext, ReactNode } from 'react';
-import { Group, ActivityLogEntry } from '../types';
-import { mockGroups } from '../services/mockData';
+import { PublishTarget, ActivityLogEntry } from '../types';
+import { mockTargets } from '../services/mockData';
 
 interface AppState {
-    groups: Group[];
+    targets: PublishTarget[];
     activityLog: ActivityLogEntry[];
 }
 
 type Action =
-    | { type: 'LEAVE_GROUPS'; payload: string[] }
+    | { type: 'REMOVE_TARGETS'; payload: string[] }
     | { type: 'ADD_LOG'; payload: Omit<ActivityLogEntry, 'id' | 'timestamp'> };
 
 const initialState: AppState = {
-    groups: mockGroups,
+    targets: mockTargets,
     activityLog: [],
 };
 
 const appReducer = (state: AppState, action: Action): AppState => {
     switch (action.type) {
-        case 'LEAVE_GROUPS': {
-            const groupNames = state.groups
+        case 'REMOVE_TARGETS': {
+            const targetNames = state.targets
                 .filter(g => action.payload.includes(g.id))
                 .map(g => g.name)
                 .join(', ');
             
             const newLog: ActivityLogEntry = {
                 id: new Date().toISOString(),
-                action: `Left ${action.payload.length} Group(s)`,
-                details: `Successfully left: ${groupNames}`,
+                action: `Removed ${action.payload.length} Target(s)`,
+                details: `Successfully removed: ${targetNames}`,
                 timestamp: new Date(),
                 status: 'Success'
             };
             
             return {
                 ...state,
-                groups: state.groups.filter(group => !action.payload.includes(group.id)),
+                targets: state.targets.filter(target => !action.payload.includes(target.id)),
                 activityLog: [newLog, ...state.activityLog]
             };
         }
