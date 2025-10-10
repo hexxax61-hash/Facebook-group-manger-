@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -16,7 +15,7 @@ export const Button: React.FC<ButtonProps> = ({ children, className, variant = '
 
     return (
         <button
-            className={`${baseClasses} ${variantClasses[variant]} ${className}`}
+            className={`${baseClasses} ${variantClasses[variant]} ${className || ''}`.trim()}
             {...props}
         >
             {children}

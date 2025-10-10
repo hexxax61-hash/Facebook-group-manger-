@@ -1,18 +1,17 @@
-
 import { GoogleGenAI } from "@google/genai";
 
 // Ensure the API key is handled securely and not exposed in client-side code.
 // For this project, we assume it's set in the environment variables.
 const API_KEY = process.env.API_KEY;
 
+const ai = API_KEY ? new GoogleGenAI({ apiKey: API_KEY }) : null;
+
 if (!API_KEY) {
     console.warn("Gemini API key not found. AI features will be disabled.");
 }
 
-const ai = new GoogleGenAI({ apiKey: API_KEY! });
-
 export const generatePostIdea = async (topic: string): Promise<string> => {
-    if (!API_KEY) {
+    if (!ai) {
         return Promise.resolve("AI functionality is disabled. Please configure your API key.");
     }
 
